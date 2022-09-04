@@ -1,14 +1,15 @@
-import React from 'react';
-import Content from './components/Content';
-import Header from './components/Header';
+import React from 'react'
+import Header from './components/header/Header'
+import './app.css'
+import Content from './components/content/Content'
 
 function App() {
-  return (
-    <div className="app wrapper">
-      <Header />
-      <Content />
-    </div>
-  );
+    return (
+        <div className='app'>
+            <Header />
+            <Content />
+        </div>
+    )
 }
 
-export default App;
+export default App

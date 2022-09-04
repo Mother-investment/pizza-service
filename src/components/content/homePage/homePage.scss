@@ -1,0 +1,162 @@
+@import '../../../assets/scss/noselect';
+@import '../../../assets/scss/variables';
+
+.home-page {
+    .container {
+        flex-direction: column;
+    }
+    &__navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__categories {
+        ul {
+            display: flex;
+            .home-page__category {
+                background-color: #f9f9f9;
+                padding: 13px 30px;
+                border-radius: 30px;
+                margin-right: 10px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.1s ease-in-out;
+                @include noselect();
+                &:hover {
+                    background-color: darken(#efefef, 2%);
+                }
+                &:active {
+                    background-color: darken(#f9f9f9, 5%);
+                }
+                &.active {
+                    background-color: #282828;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    &__sort {
+        position: relative;
+        &-label {
+            display: flex;
+            align-items: center;
+            svg {
+                margin-right: 8px;
+            }
+            b {
+                margin-right: 8px;
+            }
+            span {
+                color: $orange;
+                border-bottom: 1px dashed $orange;
+                cursor: pointer;
+                @include noselect();
+            }
+        }
+        &-popup {
+            position: absolute;
+            right: 0;
+            margin-top: 15px;
+            background: #ffffff;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 10px 0;
+            width: 160px;
+
+            ul {
+                overflow: hidden;
+                .sort-popup__item {
+                    padding: 12px 20px;
+                    cursor: pointer;
+                    @include noselect();
+                    &.active,
+                    &:hover {
+                        background: rgba(254, 95, 30, 0.05);
+                        color: $orange;
+                    }
+                    &.active {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 30px;
+        margin: 35px 0;
+    }
+    &__pizza-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .pizza-card {
+        width: 280px;
+        text-align: center;
+        margin-bottom: 65px;
+
+        &:not(:nth-of-type(4n)) {
+            margin-right: 35px;
+        }
+
+        &__image {
+            width: 260px;
+        }
+
+        &__title {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1%;
+            margin-bottom: 20px;
+        }
+
+        &__selector {
+            display: flex;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            flex-direction: column;
+            padding: 6px;
+
+            ul {
+                display: flex;
+                flex: 1;
+
+                &:first-of-type {
+                    margin-bottom: 6px;
+                }
+
+                .pizza-card__selector-item {
+                    padding: 8px;
+                    flex: 1;
+                    cursor: pointer;
+                    font-weight: 600;
+                    font-size: 14px;
+                    @include noselect();
+                    &.active {
+                        background: #ffffff;
+                        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+                        border-radius: 5px;
+                        cursor: auto;
+                    }
+                }
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        &__price {
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 27px;
+            letter-spacing: 0.015em;
+        }
+    }
+}
