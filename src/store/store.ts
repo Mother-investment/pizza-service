@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import pizzaReducer from './reducers/pizzasSlice'
 
 
 
 export const store = configureStore({
   reducer: {
+    piazza: pizzaReducer
   },
 })
 

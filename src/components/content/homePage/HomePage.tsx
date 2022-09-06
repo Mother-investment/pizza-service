@@ -1,10 +1,18 @@
 import React from 'react'
 import Categories from './categories/Categories'
-import PizzaCard from './pizzaCard/PizzaCard'
 import Sort from './sort/Sort'
 import './homePage.css'
+import PizzasList from './pizzasList/PizzasList'
 
-const HomePage = () => {
+interface ISortOption {
+    value: string
+    name: string
+}
+
+
+const HomePage: React.FC = () => {
+    const sortOptions: ISortOption[] = [{value: 'rating', name: 'популярности'}, {value: 'price', name: 'цене'}, {value: 'title', name: 'алфавиту'}]
+    
     return (
         <div className='home-page'>
             <div className='container'>
@@ -13,13 +21,7 @@ const HomePage = () => {
                     <Sort />
                 </nav>
                 <h2 className='home-page__title'>Все пиццы</h2>
-                <div className='home-page__pizza-cards'>
-                    <PizzaCard />
-                    <PizzaCard />
-                    <PizzaCard />
-                    <PizzaCard />
-                    <PizzaCard />
-                </div>
+                <PizzasList />
             </div>
         </div>
     )

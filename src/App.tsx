@@ -3,7 +3,7 @@ import Header from './components/header/Header'
 import './app.css'
 import Content from './components/content/Content'
 
-function App() {
+const App = () =>{
     return (
         <div className='app'>
             <Header />
