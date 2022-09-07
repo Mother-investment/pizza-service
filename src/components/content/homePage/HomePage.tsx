@@ -3,11 +3,7 @@ import Categories from './categories/Categories'
 import Sort from './sort/Sort'
 import './homePage.css'
 import PizzasList from './pizzasList/PizzasList'
-
-interface ISortOption {
-    value: string
-    name: string
-}
+import { ISortOption } from '../../../models/IPizza'
 
 
 const HomePage: React.FC = () => {
@@ -18,7 +14,7 @@ const HomePage: React.FC = () => {
             <div className='container'>
                 <nav className='home-page__navigation'>
                     <Categories />
-                    <Sort />
+                    <Sort {...sortOptions} />
                 </nav>
                 <h2 className='home-page__title'>Все пиццы</h2>
                 <PizzasList />

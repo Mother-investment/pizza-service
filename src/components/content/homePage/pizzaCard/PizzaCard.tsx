@@ -20,15 +20,15 @@ const PizzaCard: React.FC<IPizza> = ({id, imageUrl, title, types, sizes, price, 
     }
 
     return (
-        <div className='home-page__pizza-card pizza-card'>
+        <div key={title} className='home-page__pizza-card pizza-card'>
             <img className='pizza-card__image' src={imageUrl} alt='Pizza' />
             <h4 className='pizza-card__title'>{title}</h4>
             <div className='pizza-card__selector'> 
                 <ul className='pizza-card__selectors'>
-                    {types.map(e => <li className={`pizza-card__selector-item ${activeOptions.type === e && 'active'}`} onClick={() => chooseType(e)}>{e}</li>)}
+                    {types.map(e => <li key={e} className={`pizza-card__selector-item ${activeOptions.type === e && 'active'}`} onClick={() => chooseType(e)}>{e}</li>)}
                 </ul>
                 <ul className='pizza-card__selectors'> 
-                    {sizes.map(e => <li className={`pizza-card__selector-item ${activeOptions.size === e && 'active'}`} onClick={() => chooseSize(e)}>{e} см.</li>)}
+                    {sizes.map(e => <li key={e} className={`pizza-card__selector-item ${activeOptions.size === e && 'active'}`} onClick={() => chooseSize(e)}>{e} см.</li>)}
                 </ul>
             </div>
             <div className='pizza-card__bottom'>
