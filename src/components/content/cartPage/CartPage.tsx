@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './cartPage.css'
 
 const cartPage = () => {
@@ -185,7 +186,9 @@ const cartPage = () => {
                                     <path d='M7 13L1 6.93015L6.86175 1' stroke='#D3D3D3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'></path>
                                 </svg>
 
-                                <span>Вернуться назад</span>
+                                <Link to='/'>
+                                    <span>Вернуться назад</span>
+                                </Link>
                             </a>
                             <div className='button pay-btn'>
                                 <span>Оплатить сейчас</span>
