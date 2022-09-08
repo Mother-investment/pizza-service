@@ -9,8 +9,5 @@ export interface IPizza {
     rating: number
 }
 
-export interface ISortOption {
-    value: string
-    name: string
-}
+
 

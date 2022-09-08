@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
-import { ISortOption } from '../../../../models/IPizza'
 import SvgSelector from '../../../../SvgSelectors/SvgSelector'
 
-const Sort: React.FC<ISortOption[]> = (props) => {
-    const [visibility, setVisibility] = useState(false)
+interface IProps {
+    sortOptions: string[]
+}
 
+const Sort: React.FC<IProps> = ({sortOptions}) => {
+    const [visibility, setVisibility] = useState(false)
+    const [activeIndexOption, setActiveIndexOption] = useState<number>(0)
 
     return (
         <div className='home-page__sort'>
             <div className='home-page__sort-label'>
                 <SvgSelector name='sort-icon' />
                 <b>Сортировка по:</b>
-                <span onClick={() => {setVisibility(!visibility)}}>популярности</span>
+                <span onClick={() => {setVisibility(!visibility)}}>{sortOptions[activeIndexOption]}</span>
             </div>
             {visibility && (
                 <div className='home-page__sort-popup sort-popup'>
                     <ul>
-                        <li className='sort-popup__item active'>{props[0].name}</li>
-                        <li className='sort-popup__item'>{props[1].name}</li>
-                        <li className='sort-popup__item'>{props[2].name}</li>
+                        {sortOptions.map((e, i) => <li key={e} className={`sort-popup__item ${i === activeIndexOption && 'active'}`} onClick={() => setActiveIndexOption(i)}>{e}</li>)}
                     </ul>
                 </div>
             )}

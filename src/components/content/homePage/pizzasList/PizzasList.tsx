@@ -12,7 +12,7 @@ const PizzasList = () => {
     },[dispatch])
     return (
         <div className='home-page__pizza-cards'>
-            {pizzas.map(e => <PizzaCard {...e} />)}
+            {pizzas.map(e => <PizzaCard key={e.title} {...e} />)}
         </div>
     )
 }

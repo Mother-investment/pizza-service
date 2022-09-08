@@ -20,7 +20,7 @@ const PizzaCard: React.FC<IPizza> = ({id, imageUrl, title, types, sizes, price, 
     }
 
     return (
-        <div key={title} className='home-page__pizza-card pizza-card'>
+        <div className='home-page__pizza-card pizza-card'>
             <img className='pizza-card__image' src={imageUrl} alt='Pizza' />
             <h4 className='pizza-card__title'>{title}</h4>
             <div className='pizza-card__selector'> 

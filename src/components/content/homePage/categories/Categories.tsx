@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Categories = () => {
+interface IProps {
+    categoriesValue: string[]
+}
+
+const Categories: React.FC<IProps> = ({categoriesValue}) => {
+    const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
+
     return (
         <div className='home-page__categories'>
             <ul>
-                <li className='home-page__category active'>Все</li>
-                <li className='home-page__category'>Мясные</li>
-                <li className='home-page__category'>Вегетарианская</li>
-                <li className='home-page__category'>Гриль</li>
-                <li className='home-page__category'>Острые</li>
-                <li className='home-page__category'>Закрытые</li>
+                {categoriesValue.map((e, i) => <li key={e} className={`home-page__category ${i === activeCategoryIndex && 'active'}`} onClick={() => setActiveCategoryIndex(i)}>{e}</li>)}
             </ul>
         </div>
     )
