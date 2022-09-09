@@ -1,5 +1,6 @@
 import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
+import { IActiveSortAndCategory } from "../../models/IHomePage"
 import { IPizza } from "../../models/IPizza"
 
 
@@ -15,9 +16,9 @@ const initialState: PizzasState = {
     error: undefined
 }
 
-export const fetchPizzas = createAsyncThunk<IPizza[], undefined, {rejectValue: string}>('pizza/fetchPizza', async (_, {rejectWithValue}) =>{
+export const fetchPizzas = createAsyncThunk<IPizza[], IActiveSortAndCategory, {rejectValue: string}>('pizza/fetchPizza', async (options, {rejectWithValue}) =>{
     try {
-        const res = await axios.get<IPizza[]>('https://6316b14c33e540a6d3978af6.mockapi.io/pizzas')
+        const res = await axios.get<IPizza[]>(`https://6316b14c33e540a6d3978af6.mockapi.io/pizzas?sortBy=${options.sort}&order=desc`)
         return res.data
     } catch (error) {
         return rejectWithValue('Не удалось загрузить список пицц')

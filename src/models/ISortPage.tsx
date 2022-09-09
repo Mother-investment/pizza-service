@@ -1,0 +1,1 @@
+export type TSetActiveSort = (value: string ) => void
