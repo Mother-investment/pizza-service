@@ -11,14 +11,10 @@ import { IActiveSortAndCategory, TSetActiveCategory } from '../../../models/IHom
 const HomePage: React.FC = () => {
     const { error, pizzas, isLoading } = useAppSelector((state) => state.piazza)
     const dispatch = useAppDispatch()
-    const [activeSortAndCategory, setActiveSortAndCategory] = useState<IActiveSortAndCategory>({sort:'rating', category: 0})
+    const [activeSortAndCategory, setActiveSortAndCategory] = useState<IActiveSortAndCategory>({sort:'rating', category: 0, order: true})
 
     
-    const categoriesValue: string[] = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
-   
-    const setActiveCategory: TSetActiveCategory = (value: number) => {
-        setActiveSortAndCategory({...activeSortAndCategory, category: value})
-    }
+    
 
     useEffect(() => {
         dispatch(fetchPizzas(activeSortAndCategory))
@@ -29,11 +25,15 @@ const HomePage: React.FC = () => {
         <div className='home-page'>
             <div className='container'>
                 <nav className='home-page__navigation'>
-                    <Categories categoriesValue={categoriesValue} />
+                    <Categories activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>
                     <Sort activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>
                 </nav>
                 <h2 className='home-page__title'>Все пиццы</h2>
                 <PizzasList pizzas={pizzas} activeSortAndCategory={activeSortAndCategory}/>
+                <footer>
+                    <p>*Сортировка по алфавиту не работает корректно, ввиду ограничений сервера.</p>
+                    <p>*При выборе категории, работает только сортировка по цене, ввиду ограничений сервера.</p>
+                </footer>
             </div>
         </div>
     )

@@ -18,7 +18,7 @@ const initialState: PizzasState = {
 
 export const fetchPizzas = createAsyncThunk<IPizza[], IActiveSortAndCategory, {rejectValue: string}>('pizza/fetchPizza', async (options, {rejectWithValue}) =>{
     try {
-        const res = await axios.get<IPizza[]>(`https://6316b14c33e540a6d3978af6.mockapi.io/pizzas?sortBy=${options.sort}&order=desc`)
+        const res = await axios.get<IPizza[]>(`https://6316b14c33e540a6d3978af6.mockapi.io/pizzas?${options.category > 0 && `category=${options.category}`}&sortBy=${options.sort}&order=${options.order ? 'desc' : 'asc'}`)
         return res.data
     } catch (error) {
         return rejectWithValue('Не удалось загрузить список пицц')

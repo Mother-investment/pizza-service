@@ -13,7 +13,9 @@ const Sort: React.FC<IProps> = ({ activeSortAndCategory, setActiveSortAndCategor
     const [visibility, setVisibility] = useState(false)
     const activeSortOptionName = sortOptions.find(e => e.sortProperty === activeSortAndCategory.sort)
     const setActiveSort: TSetActiveSort = (value) => {
-        setActiveSortAndCategory({...activeSortAndCategory, sort: value})
+        value === activeSortAndCategory.sort
+        ? setActiveSortAndCategory({...activeSortAndCategory, sort: value, order: !activeSortAndCategory.order})
+        : setActiveSortAndCategory({...activeSortAndCategory, sort: value})
         setVisibility(false)
     }
 

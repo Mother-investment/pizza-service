@@ -5,6 +5,7 @@ export interface ISortOption {
 export interface IActiveSortAndCategory {
     sort: string
     category: number
+    order: boolean
 }
 
 export type TSetActiveCategory = (value: number) => void
