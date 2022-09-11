@@ -6,12 +6,15 @@ import PizzasList from './pizzasList/PizzasList'
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 import { fetchPizzas } from '../../../store/reducers/pizzasSlice'
 import { IActiveSortAndCategory, TSetActiveCategory } from '../../../models/IHomePage'
+import Search from './search/Search'
 
 
 const HomePage: React.FC = () => {
     const { error, pizzas, isLoading } = useAppSelector((state) => state.piazza)
     const dispatch = useAppDispatch()
     const [activeSortAndCategory, setActiveSortAndCategory] = useState<IActiveSortAndCategory>({sort:'rating', category: 0, order: true})
+    const [activeSearch, setActiveSearch] = useState<boolean>(false)
+    const [searchValue, setSearchValue] = useState<string>('')
 
     
     
@@ -26,7 +29,8 @@ const HomePage: React.FC = () => {
             <div className='container'>
                 <nav className='home-page__navigation'>
                     <Categories activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>
-                    <Sort activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>
+                    <Search activeSearch={activeSearch} setActiveSearch={setActiveSearch} searchValue={searchValue} setSearchValue={setSearchValue} />
+                    {activeSearch || <Sort activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>}
                 </nav>
                 <h2 className='home-page__title'>Все пиццы</h2>
                 <PizzasList pizzas={pizzas} activeSortAndCategory={activeSortAndCategory}/>

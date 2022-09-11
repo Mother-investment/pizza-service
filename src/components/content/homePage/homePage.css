@@ -15,6 +15,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .home-page__categories ul {
@@ -57,6 +58,33 @@
 .home-page__categories ul .home-page__category.active {
   background-color: #282828;
   color: #fff;
+}
+
+.home-page .search__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-page .search__button svg {
+  position: absolute;
+  right: 325px;
+}
+
+.home-page .search__button input {
+  height: 30px;
+  width: 330px;
+  margin-right: 25px;
+  padding: 0 30px;
+  border: 2px solid #e5e5e5;
+  border-radius: 30px;
+}
+
+.home-page .search__button input:focus {
+  border: 2px solid #d9d9d9;
 }
 
 .home-page__sort {

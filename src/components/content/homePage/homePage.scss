@@ -9,6 +9,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
     &__categories {
         ul {
@@ -31,6 +32,27 @@
                 &.active {
                     background-color: #282828;
                     color: #fff;
+                }
+            }
+        }
+    }
+    .search {
+        &__button {
+            display: flex;
+            align-items: center;
+            svg {
+                position: absolute;
+                right: 325px;
+            }
+            input {
+                height: 30px;
+                width: 330px;
+                margin-right: 25px;
+                padding: 0 30px;
+                border: 2px solid darken(#f2f2f2, 5%);
+                border-radius: 30px;
+                &:focus {
+                    border: 2px solid darken(#f2f2f2, 10%);
                 }
             }
         }
