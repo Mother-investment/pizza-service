@@ -12,9 +12,9 @@ const Search: React.FC<SearchProps> = ({activeSearch, setActiveSearch, searchVal
     return (
         <div className='search'>
             <div className='search__button'>
-                <SvgSelector name='search' />
+                <div className={`search__icon ${activeSearch && 'search__icon--active'}`}><SvgSelector name='search' /></div>
                 {activeSearch || <span onClick={() => setActiveSearch(true)}>Поиск</span>}
-                {activeSearch && <input type="text" autoFocus onBlur={() => searchValue === '' && setActiveSearch(false)} value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>}
+                {activeSearch && <input type="text" className='search__input' autoFocus onBlur={() => searchValue === '' && setActiveSearch(false)} value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>}
                 
             </div>
         </div>

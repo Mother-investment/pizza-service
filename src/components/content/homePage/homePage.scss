@@ -38,21 +38,31 @@
     }
     .search {
         &__button {
+            position: relative;
             display: flex;
             align-items: center;
-            svg {
+            justify-content: center;
+            .search__icon {
                 position: absolute;
-                right: 325px;
+                left: -25px;
+                &.search__icon--active {
+                    left: 8px; 
+                }
             }
-            input {
+            .search__input {
                 height: 30px;
-                width: 330px;
+                width: 10vh;
                 margin-right: 25px;
                 padding: 0 30px;
                 border: 2px solid darken(#f2f2f2, 5%);
                 border-radius: 30px;
+                transition-property: width;
+                transition-duration: 3s;
+                transition: width 2s;
                 &:focus {
                     border: 2px solid darken(#f2f2f2, 10%);
+                    width: 80vw;
+                    transition: width 1s;
                 }
             }
         }

@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
         <div className='home-page'>
             <div className='container'>
                 <nav className='home-page__navigation'>
-                    <Categories activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>
+                    {activeSearch || <Categories activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>}
                     <Search activeSearch={activeSearch} setActiveSearch={setActiveSearch} searchValue={searchValue} setSearchValue={setSearchValue} />
                     {activeSearch || <Sort activeSortAndCategory={activeSortAndCategory} setActiveSortAndCategory={setActiveSortAndCategory}/>}
                 </nav>
